@@ -3,69 +3,227 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Custom Reversi official site.">
-    <meta property="og:title" content="Custom Reversi">
-    <meta property="og:description" content="人数、盤面、勝利条件を変えて遊べるカスタム・リバーシ。">
-    <title>Custom Reversi</title>
+    <meta name="description" content="Custom Reversi official site. 人数、盤面サイズ、勝利条件を変えて遊べるブラウザ向けリバーシゲームの公式トップページです。">
+    <meta name="google-adsense-account" content="ca-pub-1361559686394936">
+    <link rel="canonical" href="https://utunomiya30-design.github.io/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Custom Reversi | カスタム・リバーシ公式サイト">
+    <meta property="og:description" content="2人から4人まで、4x4から16x16まで。通常、逆転、スコア制で遊べるブラウザ向けリバーシゲームです。">
+    <title>Custom Reversi | カスタム・リバーシ公式サイト</title>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1361559686394936" crossorigin="anonymous"></script>
     <style>
       :root {
         color-scheme: light;
         --bg: #f7f3ea;
         --surface: #fffdf7;
+        --panel: #f2e8d7;
         --ink: #1c1b18;
         --muted: #69645b;
         --line: #d7cdbb;
         --green: #1f5d47;
+        --gold: #c88d28;
       }
 
-      * {
-        box-sizing: border-box;
-      }
+      * { box-sizing: border-box; }
 
       body {
         min-height: 100vh;
         margin: 0;
-        display: grid;
-        place-items: center;
-        padding: 24px;
         background: linear-gradient(180deg, #fffdf7, var(--bg));
         color: var(--ink);
         font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       }
 
+      .site-nav,
+      .site-footer,
       main {
-        width: min(720px, 100%);
-        padding: 28px;
+        width: min(1080px, calc(100% - 32px));
+        margin-inline: auto;
+      }
+
+      .site-nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 18px 0 10px;
+        border-bottom: 1px solid rgba(91, 76, 52, 0.14);
+      }
+
+      .site-brand {
+        color: var(--green);
+        font-weight: 900;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      .site-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 12px;
+      }
+
+      .site-links a,
+      .site-footer a,
+      main a:not(.primary-link) {
+        color: var(--green);
+        font-weight: 800;
+        text-decoration: none;
+      }
+
+      main {
+        display: grid;
+        gap: 22px;
+        padding: 34px 0 42px;
+      }
+
+      .hero,
+      .content-section {
         border: 1px solid var(--line);
         border-radius: 8px;
-        background: var(--surface);
-        box-shadow: 0 18px 50px rgba(48, 41, 30, 0.12);
+        background: linear-gradient(180deg, rgba(255,253,247,.98), rgba(250,245,235,.98));
+        box-shadow: 0 18px 50px rgba(48, 41, 30, 0.1);
       }
 
-      p {
+      .hero {
+        padding: clamp(26px, 5vw, 48px);
+      }
+
+      .kicker {
+        margin: 0 0 10px;
+        color: var(--green);
+        font-size: .82rem;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        max-width: 820px;
+        margin: 0 0 16px;
+        font-size: clamp(2.2rem, 7vw, 5rem);
+        line-height: 1.02;
+        letter-spacing: 0;
+      }
+
+      h2 {
+        margin: 0 0 10px;
+        font-size: 1.36rem;
+      }
+
+      p,
+      li {
         color: var(--muted);
-        line-height: 1.7;
+        line-height: 1.8;
       }
 
-      a {
+      .primary-link {
         display: inline-flex;
         align-items: center;
-        min-height: 44px;
-        padding: 0 18px;
+        justify-content: center;
+        min-height: 48px;
+        margin-top: 10px;
+        padding: 0 20px;
         border-radius: 8px;
         background: var(--green);
         color: #fff;
-        font-weight: 800;
+        font-weight: 900;
         text-decoration: none;
+      }
+
+      .content-section {
+        padding: 24px;
+      }
+
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 16px;
+      }
+
+      .info-card {
+        padding: 16px;
+        border: 1px solid rgba(91, 76, 52, 0.14);
+        border-radius: 8px;
+        background: linear-gradient(180deg, #fffefb, var(--panel));
+      }
+
+      .info-card strong {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--green);
+      }
+
+      .site-footer {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 26px 0 34px;
+        border-top: 1px solid rgba(91, 76, 52, 0.14);
+        color: var(--muted);
+        font-size: .9rem;
+      }
+
+      @media (max-width: 720px) {
+        .site-nav { align-items: flex-start; flex-direction: column; }
+        .site-links { justify-content: flex-start; }
+        .info-grid { grid-template-columns: 1fr; }
       }
     </style>
   </head>
   <body>
+    <nav class="site-nav" aria-label="サイト内メニュー">
+      <a class="site-brand" href="/">Custom Reversi</a>
+      <div class="site-links">
+        <a href="/custom-reversi/">ゲーム</a>
+        <a href="/custom-reversi/guide.html">遊び方</a>
+        <a href="/custom-reversi/strategy.html">戦略ガイド</a>
+        <a href="/custom-reversi/rules.html">ルール設計</a>
+        <a href="/custom-reversi/modes.html">おすすめ設定</a>
+        <a href="/custom-reversi/faq.html">FAQ</a>
+        <a href="/custom-reversi/about.html">サイト情報</a>
+        <a href="/custom-reversi/contact.html">お問い合わせ</a>
+        <a href="/custom-reversi/privacy.html">プライバシー</a>
+      </div>
+    </nav>
+
     <main>
-      <h1>Custom Reversi</h1>
-      <p>人数、盤面、勝利条件を変えて遊べるWebブラウザゲームです。</p>
-      <a href="/custom-reversi/">カスタム・リバーシを開く</a>
+      <section class="hero">
+        <p class="kicker">Custom Reversi Official Site</p>
+        <h1>カスタム・リバーシ</h1>
+        <p>カスタム・リバーシは、人数、盤面サイズ、勝利条件を自由に変えて遊べるブラウザ向けボードゲームです。標準的なリバーシの挟み込みルールをもとに、3人戦、4人戦、スコア制、逆転勝利、オンライン部屋、ランダムマッチなどを試せるようにしています。</p>
+        <p>ゲームはインストール不要で、PCやスマートフォンのブラウザから利用できます。まずは2人、8x8、通常モードで基本を確認し、慣れてきたら3人スコア戦や4人パーティ設定を試すと、通常のリバーシとは違う読み合いを楽しめます。</p>
+        <a class="primary-link" href="/custom-reversi/">ゲームを開く</a>
+      </section>
+
+      <section class="content-section">
+        <h2>主な特徴</h2>
+        <div class="info-grid">
+          <div class="info-card"><strong>自由な盤面サイズ</strong><p>4x4、6x6、8x8、12x12、16x16を選べます。短時間の対戦から、じっくり考える大きな盤面まで切り替えられます。</p></div>
+          <div class="info-card"><strong>2人から4人まで対応</strong><p>3人戦や4人戦では、間に複数の相手色が混ざっていても、自分の石で挟めばまとめて反転します。</p></div>
+          <div class="info-card"><strong>複数の勝利条件</strong><p>通常の石数勝負、石が少ない方が勝つ逆転モード、マスごとの得点で競うスコアモードを用意しています。</p></div>
+          <div class="info-card"><strong>URLで共有できる対戦</strong><p>ルール設定やオンライン部屋をURLで共有できます。友人に送れば、同じ条件で対戦を始められます。</p></div>
+        </div>
+      </section>
+
+      <section class="content-section">
+        <h2>このサイトのコンテンツ</h2>
+        <p><a href="/custom-reversi/guide.html">遊び方</a>では基本ルールとオンライン対戦の流れを説明しています。<a href="/custom-reversi/strategy.html">戦略ガイド</a>では、2人戦、多人数戦、逆転モード、スコアモードで考えるべき点を整理しています。</p>
+        <p><a href="/custom-reversi/rules.html">ルール設計</a>では初期配置や反転処理の考え方、<a href="/custom-reversi/modes.html">おすすめ設定</a>では初めて遊ぶ人向けの組み合わせを紹介しています。よくある疑問、プライバシー、問い合わせ先も公開ページとして用意しています。</p>
+      </section>
+
+      <section class="content-section">
+        <h2>運営とプライバシー</h2>
+        <p>本サイトは静的なWebサイトとして公開しており、ゲーム内で選んだ背景画像や駒画像はブラウザ内で一時的に表示します。オンライン対戦に必要な部屋コード、盤面状態、現在の手番、プレイヤー名などは、対戦機能を提供する目的で扱います。</p>
+        <p>広告配信に関する情報、Cookie、外部サービスの利用については<a href="/custom-reversi/privacy.html">プライバシーポリシー</a>にまとめています。不具合報告や改善提案は<a href="/custom-reversi/contact.html">お問い合わせ</a>ページから確認できます。</p>
+      </section>
     </main>
+
+    <footer class="site-footer">
+      <span>© 2026 Custom Reversi</span>
+      <span><a href="/custom-reversi/privacy.html">プライバシーポリシー</a> / <a href="/custom-reversi/contact.html">お問い合わせ</a></span>
+    </footer>
   </body>
 </html>
